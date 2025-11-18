@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICICI Prudential AMC FAQ Assistant</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <h1 class="logo">ICICI Prudential AMC</h1>
+                <p class="tagline">FAQ Assistant</p>
+            </div>
+        </div>
+
+        <div class="welcome-section">
+            <h2 class="welcome-text">Welcome! Ask me anything about ICICI Prudential Mutual Funds</h2>
+            <p class="disclaimer">Facts-only. No investment advice.</p>
+        </div>
+
+        <div class="example-questions">
+            <h3 class="section-title">Example Questions:</h3>
+            <div class="question-cards">
+                <div class="question-card" onclick="askQuestion('What is the rating for ICICI Prudential Large Cap Fund?')">
+                    <div class="question-icon">⭐</div>
+                    <p class="question-text">What is the rating for ICICI Prudential Large Cap Fund?</p>
+                </div>
+                <div class="question-card" onclick="askQuestion('What is the expense ratio?')">
+                    <div class="question-icon">📊</div>
+                    <p class="question-text">What is the expense ratio?</p>
+                </div>
+                <div class="question-card" onclick="askQuestion('What is the minimum SIP amount?')">
+                    <div class="question-icon">💰</div>
+                    <p class="question-text">What is the minimum SIP amount?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-section">
+            <div class="input-container">
+                <input 
+                    type="text" 
+                    id="queryInput" 
+                    placeholder="Ask your question about ICICI Prudential funds..."
+                    onkeypress="handleKeyPress(event)"
+                />
+                <button id="askButton" onclick="askQuestion()">
+                    <span>Ask</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="response-section" id="responseSection" style="display: none;">
+            <div class="response-card">
+                <div class="response-header">
+                    <h3>Answer</h3>
+                    <button class="close-btn" onclick="closeResponse()">×</button>
+                </div>
+                <div class="response-content" id="responseContent">
+                    <!-- Answer will be inserted here -->
+                </div>
+                <div class="response-sources" id="responseSources">
+                    <!-- Sources will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Getting your answer...</p>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
+
