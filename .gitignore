@@ -23,10 +23,8 @@ wheels/
 .installed.cfg
 *.egg
 
-# Data files
-data/
-*.json
-!requirements.txt
+# Data files (keep tracked to allow deployments)
+!data/
 
 # IDE
 .vscode/

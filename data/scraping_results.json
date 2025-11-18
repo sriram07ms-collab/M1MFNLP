@@ -1,0 +1,33 @@
+{
+  "successful": [],
+  "failed": [
+    {
+      "url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+      "reason": "Validation failed"
+    },
+    {
+      "url": "https://groww.in/mutual-funds/icici-prudential-midcap-fund-direct-growth",
+      "reason": "Validation failed"
+    }
+  ],
+  "validation_errors": [
+    {
+      "url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+      "errors": [
+        "expense_ratio: Expense ratio not found",
+        "minimum_sip: Minimum SIP not found",
+        "riskometer: Riskometer not found",
+        "benchmark: Benchmark not found"
+      ]
+    },
+    {
+      "url": "https://groww.in/mutual-funds/icici-prudential-midcap-fund-direct-growth",
+      "errors": [
+        "expense_ratio: Expense ratio not found",
+        "minimum_sip: Minimum SIP not found",
+        "riskometer: Riskometer not found",
+        "benchmark: Benchmark not found"
+      ]
+    }
+  ]
+}

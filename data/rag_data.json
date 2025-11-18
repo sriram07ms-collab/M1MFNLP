@@ -1,0 +1,44 @@
+[
+  {
+    "fund_name": "ICICI Prudential Large Cap Fund Direct Growth",
+    "fund_id": "test_large_cap_001",
+    "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+    "facts": [
+      {
+        "fact": "Expense ratio: 0.85%",
+        "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+        "category": "expense_ratio"
+      },
+      {
+        "fact": "Exit load: 1% if redeemed within 1 year",
+        "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+        "category": "exit_load"
+      },
+      {
+        "fact": "Minimum SIP: ₹100",
+        "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+        "category": "minimum_sip"
+      },
+      {
+        "fact": "Rating: 5",
+        "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+        "category": "rating"
+      },
+      {
+        "fact": "Riskometer: Very High",
+        "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+        "category": "riskometer"
+      },
+      {
+        "fact": "Benchmark: NIFTY 100 Total Return Index",
+        "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+        "category": "benchmark"
+      },
+      {
+        "fact": "Statement download: Available - Check ICICI Prudential AMC website or registrar portal",
+        "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+        "category": "statement_download"
+      }
+    ]
+  }
+]

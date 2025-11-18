@@ -1,0 +1,46 @@
+[
+  {
+    "fund_id": "test_large_cap_001",
+    "fund_name": "ICICI Prudential Large Cap Fund Direct Growth",
+    "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+    "scraped_at": "2025-11-18 00:46:50",
+    "last_updated": "2025-11-18T00:46:50.822425",
+    "expense_ratio": {
+      "value": 0.85,
+      "unit": "%",
+      "display": "0.85%"
+    },
+    "exit_load": {
+      "value": 1.0,
+      "unit": "%",
+      "period": "1",
+      "display": "1% if redeemed within 1 year"
+    },
+    "minimum_sip": {
+      "value": 100,
+      "unit": "INR",
+      "display": "₹100"
+    },
+    "lock_in": null,
+    "rating": {
+      "value": 5,
+      "display": "5",
+      "max_rating": 5
+    },
+    "riskometer": {
+      "value": "very high",
+      "display": "Very High"
+    },
+    "benchmark": {
+      "value": "NIFTY 100 Total Return Index",
+      "display": "NIFTY 100 Total Return Index"
+    },
+    "statement_download": {
+      "available": true,
+      "instructions": [
+        "Statements can be downloaded from ICICI Prudential AMC website or registrar portal (CAMS/Karvy)"
+      ],
+      "display": "Available - Check ICICI Prudential AMC website or registrar portal"
+    }
+  }
+]

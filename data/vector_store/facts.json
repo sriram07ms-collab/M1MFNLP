@@ -1,0 +1,51 @@
+[
+  {
+    "fact": "Expense ratio: 0.85%",
+    "category": "expense_ratio",
+    "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+    "fund_name": "ICICI Prudential Large Cap Fund Direct Growth",
+    "fund_id": "test_large_cap_001"
+  },
+  {
+    "fact": "Exit load: 1% if redeemed within 1 year",
+    "category": "exit_load",
+    "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+    "fund_name": "ICICI Prudential Large Cap Fund Direct Growth",
+    "fund_id": "test_large_cap_001"
+  },
+  {
+    "fact": "Minimum SIP: ₹100",
+    "category": "minimum_sip",
+    "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+    "fund_name": "ICICI Prudential Large Cap Fund Direct Growth",
+    "fund_id": "test_large_cap_001"
+  },
+  {
+    "fact": "Rating: 5",
+    "category": "rating",
+    "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+    "fund_name": "ICICI Prudential Large Cap Fund Direct Growth",
+    "fund_id": "test_large_cap_001"
+  },
+  {
+    "fact": "Riskometer: Very High",
+    "category": "riskometer",
+    "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+    "fund_name": "ICICI Prudential Large Cap Fund Direct Growth",
+    "fund_id": "test_large_cap_001"
+  },
+  {
+    "fact": "Benchmark: NIFTY 100 Total Return Index",
+    "category": "benchmark",
+    "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+    "fund_name": "ICICI Prudential Large Cap Fund Direct Growth",
+    "fund_id": "test_large_cap_001"
+  },
+  {
+    "fact": "Statement download: Available - Check ICICI Prudential AMC website or registrar portal",
+    "category": "statement_download",
+    "source_url": "https://groww.in/mutual-funds/icici-prudential-large-cap-fund-direct-growth",
+    "fund_name": "ICICI Prudential Large Cap Fund Direct Growth",
+    "fund_id": "test_large_cap_001"
+  }
+]
