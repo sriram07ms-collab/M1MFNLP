@@ -3,26 +3,38 @@ Gemini LLM client for FAQ Assistant.
 Uses Gemini 2.0 Flash model for generating answers.
 """
 
-import google.generativeai as genai
 from typing import List, Dict, Optional
+
 from config import GEMINI_API_KEY, GEMINI_MODEL, MAX_CONTEXT_LENGTH
+
+try:
+    import google.generativeai as genai
+except ImportError:  # pragma: no cover
+    genai = None
 
 
 class GeminiClient:
     """Client for interacting with Gemini 2.0 Flash model."""
     
     def __init__(self):
-        """Initialize Gemini client with API key."""
+        """Initialize Gemini client; gracefully handles missing API key."""
         from config import validate_gemini_key
-        validate_gemini_key()  # Validate before using
-        genai.configure(api_key=GEMINI_API_KEY)
-        self.model = genai.GenerativeModel(GEMINI_MODEL)
+
+        self.enabled = bool(GEMINI_API_KEY and GEMINI_API_KEY != "your_gemini_api_key_here")
+        self.model = None
         self.generation_config = {
             "temperature": 0.3,  # Lower temperature for factual answers
             "top_p": 0.95,
             "top_k": 40,
             "max_output_tokens": 500,  # Limit response length
         }
+
+        if self.enabled:
+            validate_gemini_key()
+            if genai is None:
+                raise ImportError("google-generativeai package is required when GEMINI_API_KEY is set")
+            genai.configure(api_key=GEMINI_API_KEY)
+            self.model = genai.GenerativeModel(GEMINI_MODEL)
     
     def generate_answer(
         self,
@@ -41,6 +53,9 @@ class GeminiClient:
         Returns:
             Dict with answer and source URLs
         """
+        if not self.enabled or not self.model:
+            raise Exception("LLM_DISABLED")
+
         # Build context from facts
         context_parts = []
         source_urls = set()
@@ -126,6 +141,8 @@ Answer (factual, concise, no advice, extract specific value if applicable):"""
     
     def test_connection(self) -> bool:
         """Test connection to Gemini API."""
+        if not self.enabled or not self.model:
+            return False
         try:
             test_response = self.model.generate_content(
                 "Say 'Hello' if you can read this.",
