@@ -145,14 +145,24 @@ async def health_check():
     """Health check endpoint."""
     pipeline = get_rag_pipeline()
     
-    # Check Gemini connection
+    # Check Gemini connection (optional - keyword search works without it)
     gemini_connected = pipeline.llm_client.test_connection()
     
     # Get vector store stats
     stats = pipeline.vector_store.get_stats()
     
-    status = "healthy" if gemini_connected and stats.get("index_built") else "degraded"
-    message = "Service is operational" if status == "healthy" else "Service has issues"
+    # Service is healthy if we have facts loaded (keyword search works)
+    # Gemini is optional - fallback mode works fine
+    has_facts = stats.get("total_facts", 0) > 0
+    status = "healthy" if has_facts else "degraded"
+    
+    if status == "healthy":
+        if gemini_connected:
+            message = "Service is operational (LLM available)"
+        else:
+            message = "Service is operational (keyword search mode - no LLM needed)"
+    else:
+        message = "Service has issues - no facts loaded"
     
     return HealthResponse(
         status=status,
