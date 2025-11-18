@@ -214,12 +214,33 @@ The backend implements a complete RAG (Retrieval-Augmented Generation) pipeline 
    python setup_backend.py
    ```
 
-4. **Start API server:**
+4. **(Optional) Warm up embedding model** – run this once (locally or during build) so Render doesn’t re-download 70 MB of weights on each boot:
+   ```bash
+   python warm_embedding_model.py
+   ```
+   This caches `sentence-transformers/paraphrase-MiniLM-L3-v2` under `~/.cache/huggingface`.
+
+5. **Start API server:**
    ```bash
    python api.py
    # Or (dev): uvicorn api:app --reload
    # Or (deploy on Render/Heroku): uvicorn api:app --host 0.0.0.0 --port ${PORT:-8000}
    ```
+
+### Render Deployment Tips
+
+Add the warm-up script to your Render build command so the model downloads during build rather than first request:
+
+```
+pip install -r requirements.txt && python warm_embedding_model.py
+```
+
+Keep `data/` checked into git so the service boots with a ready-made FAISS index. After deployment you can verify everything with:
+
+```
+curl https://<your-service>.onrender.com/health
+curl "https://<your-service>.onrender.com/query?q=What%20is%20the%20rating"
+```
 
 ### API Endpoints
 
