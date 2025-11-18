@@ -46,6 +46,27 @@ The system follows a modular architecture:
 - **Source URL Tracking**: Every data point includes its source URL
 - **Structured Storage**: Data stored in JSON format for easy retrieval
 
+### Sources
+
+- [Groww Mutual Fund pages](https://groww.in/mutual-funds) – scraped for factual data (expense ratio, SIP, benchmark, etc.)
+- ICICI Prudential AMC official website – referenced in responses for disclaimers and additional details
+- FAISS vector store (`data/vector_store/`) – precomputed fact embeddings built from the scraped Groww pages
+
+### Sample Q&A
+
+| Question | Answer (fallback mode) |
+| --- | --- |
+| *What is the rating for ICICI Prudential Large Cap Fund?* | `5` |
+| *What is the minimum SIP amount?* | `100` |
+| *What is the expense ratio?* | `0.85%` |
+
+> All responses cite Groww as the factual source and include the URL inside the API payload.
+
+### Disclaimer
+
+- Facts-only assistant. No investment advice or recommendations.
+- For portfolio guidance, consult a qualified financial advisor or visit [ICICI Prudential AMC](https://www.icicipruamc.com/).
+
 ## Installation
 
 1. Install dependencies:
@@ -241,6 +262,18 @@ Keep `data/` checked into git so the service boots with a ready-made FAISS index
 curl https://<your-service>.onrender.com/health
 curl "https://<your-service>.onrender.com/query?q=What%20is%20the%20rating"
 ```
+
+### Known Limitations
+
+- Only three funds are supported out of the box: **ICICI Prudential Large Cap**, **Mid Cap**, and **Small Cap**. Adding more requires re-running the scraper and rebuilding the vector store.
+- When Gemini quota is exhausted or no API key is configured, the backend automatically falls back to fact-based answers. Expect shorter, templated responses in this mode.
+- Render free tier enforces ~512 MB RAM and a small model cache. Use `python warm_embedding_model.py` during build or upgrade the plan if you add heavier models.
+
+### Gemini API Notes
+
+- Default model: `gemini-2.0-flash-exp`.
+- Free tier limits (per Google Gemini docs) are roughly **15 requests/min** and **1 M input tokens/day**. Exceeding that yields HTTP 429 from `google.generativeai`.
+- The fallback path (`LLM_DISABLED`) ensures the service still answers from retrieved facts when Gemini is unavailable.
 
 ### API Endpoints
 
