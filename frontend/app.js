@@ -1,5 +1,9 @@
 // API Configuration
-const API_BASE_URL = 'http://localhost:8000';
+const LOCAL_API_BASE_URL = 'http://localhost:8000';
+const PRODUCTION_API_BASE_URL = 'https://m1mfnlp-backend.onrender.com'; // TODO: replace with actual backend URL
+const API_BASE_URL = window.location.hostname === 'localhost'
+    ? LOCAL_API_BASE_URL
+    : PRODUCTION_API_BASE_URL;
 
 // DOM Elements
 const queryInput = document.getElementById('queryInput');
