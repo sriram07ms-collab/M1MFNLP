@@ -25,8 +25,9 @@ RAG_DATA_FILE = os.path.join(DATA_DIR, "rag_data.json")
 
 # Vector Store Configuration
 VECTOR_STORE_DIR = os.path.join(DATA_DIR, "vector_store")
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"  # Lightweight embedding model
-VECTOR_DIMENSION = 384  # Dimension for all-MiniLM-L6-v2
+# Use a compact embedding model to reduce memory footprint on Render
+EMBEDDING_MODEL = "sentence-transformers/paraphrase-MiniLM-L3-v2"
+VECTOR_DIMENSION = 384  # Dimension for MiniLM models
 
 # RAG Configuration
 TOP_K_RESULTS = 3  # Number of relevant facts to retrieve
