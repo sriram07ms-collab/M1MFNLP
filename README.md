@@ -217,7 +217,8 @@ The backend implements a complete RAG (Retrieval-Augmented Generation) pipeline 
 4. **Start API server:**
    ```bash
    python api.py
-   # Or: uvicorn api:app --reload
+   # Or (dev): uvicorn api:app --reload
+   # Or (deploy on Render/Heroku): uvicorn api:app --host 0.0.0.0 --port ${PORT:-8000}
    ```
 
 ### API Endpoints

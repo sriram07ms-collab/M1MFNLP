@@ -14,7 +14,8 @@ GEMINI_MODEL = "gemini-2.0-flash-exp"  # Gemini 2.0 Flash model
 
 # API Configuration
 API_HOST = os.getenv("API_HOST", "0.0.0.0")
-API_PORT = int(os.getenv("API_PORT", "8000"))
+# Render and other PaaS providers expose the listening port via PORT
+API_PORT = int(os.getenv("PORT") or os.getenv("API_PORT", "8000"))
 API_DEBUG = os.getenv("API_DEBUG", "false").lower() == "true"
 
 # Data Configuration
