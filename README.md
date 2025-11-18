@@ -240,6 +240,8 @@ The backend implements a complete RAG (Retrieval-Augmented Generation) pipeline 
    python warm_embedding_model.py
    ```
    This caches `sentence-transformers/paraphrase-MiniLM-L3-v2` under `~/.cache/huggingface`.
+   
+   **Note:** With the pre-built FAISS index (committed in `data/vector_store/`), the embedding model is loaded lazily only when needed (first query). This allows the service to start faster on Render's free tier.
 
 5. **Start API server:**
    ```bash

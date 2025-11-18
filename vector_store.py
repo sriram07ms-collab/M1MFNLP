@@ -16,11 +16,21 @@ class VectorStore:
     """Vector store for semantic search of fund facts."""
     
     def __init__(self):
-        """Initialize vector store with embedding model."""
-        self.embedding_model = SentenceTransformer(EMBEDDING_MODEL)
+        """Initialize vector store. Model loaded lazily only if needed."""
+        self.embedding_model = None  # Load lazily only when needed
         self.index = None
         self.facts = []  # Store original facts with metadata
         self._ensure_vector_store_dir()
+        
+        # Try to load existing index first (no model needed)
+        self.load_index()
+    
+    def _get_embedding_model(self):
+        """Get embedding model, loading it lazily if not already loaded."""
+        if self.embedding_model is None:
+            print("Loading embedding model (first time only)...")
+            self.embedding_model = SentenceTransformer(EMBEDDING_MODEL)
+        return self.embedding_model
     
     def _ensure_vector_store_dir(self):
         """Create vector store directory if it doesn't exist."""
@@ -85,7 +95,8 @@ class VectorStore:
         # Generate embeddings
         print(f"Generating embeddings for {len(all_facts)} facts...")
         fact_texts = [f["fact"] for f in all_facts]
-        embeddings = self.embedding_model.encode(
+        model = self._get_embedding_model()  # Load model only when building index
+        embeddings = model.encode(
             fact_texts,
             show_progress_bar=True,
             convert_to_numpy=True
@@ -124,8 +135,9 @@ class VectorStore:
                 if not self.build_index():
                     return []
         
-        # Generate query embedding
-        query_embedding = self.embedding_model.encode(
+        # Generate query embedding (load model lazily only when needed)
+        model = self._get_embedding_model()
+        query_embedding = model.encode(
             [query],
             convert_to_numpy=True
         ).astype('float32')
