@@ -31,6 +31,34 @@ The system follows a modular architecture:
 └─────────────────┘
 ```
 
+## Tech Stack
+
+### Backend
+- **Python 3.11**
+- **FastAPI** - API framework
+- **Uvicorn** - ASGI server
+- **FAISS** - Vector search (optional)
+- **sentence-transformers** - Embeddings (optional)
+- **Google Gemini API** - LLM (optional)
+- **BeautifulSoup4** - Web scraping
+- **JSON** - Data storage
+
+### Frontend
+- **HTML5**
+- **CSS3**
+- **Vanilla JavaScript** (no frameworks)
+
+### Deployment
+- **Render** - Backend hosting
+- **GitHub Pages** - Frontend hosting
+- **GitHub** - Version control
+
+### Architecture
+- **RAG (Retrieval-Augmented Generation)**
+- **Fallback**: Keyword search when ML/LLM unavailable
+
+**Total**: ~15 Python packages, 3 frontend files, deployed on free tiers.
+
 ## Features
 
 - **Data Extraction**: Scrapes fund data from Groww website
